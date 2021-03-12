@@ -17,6 +17,10 @@ describe('Order.js', () => {
     getDate.mockClear();
   })
 
+  afterAll( () => {
+    jest.resetModules();
+  })
+
   it('render with some fake data', () => {
     const order = fakeOrders[0]
 

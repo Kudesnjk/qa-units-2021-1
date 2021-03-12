@@ -22,7 +22,7 @@ describe('sortByItemCount function', () => {
 		expect(result).toBe(0);
 	});
 
-	it('first order longer then second', () => {
+	it('first order longer than second', () => {
 		const order1 = {
 			items: ['item1', 'item2', 'item3'],
 		};
@@ -36,7 +36,7 @@ describe('sortByItemCount function', () => {
 		expect(result).toBe(1);
 	})
 
-	it('first order shorter then second', () => {
+	it('first order shorter than second', () => {
 		const order1 = {
 			items: ['item1', 'item2'],
 		};
@@ -95,7 +95,7 @@ describe('sortByDate function', () => {
 		expect(result).toBe(0);
 	});
 
-	it('first date bigger then second', () => {
+	it('first date bigger than second', () => {
 		const order1 = {
 			date: 2,
 		};
@@ -109,7 +109,7 @@ describe('sortByDate function', () => {
 		expect(result).toBe(-1);
 	})
 
-	it('first date smaller then second', () => {
+	it('first date smaller than second', () => {
 		const order1 = {
 			date: 1,
 		};
