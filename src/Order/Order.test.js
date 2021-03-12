@@ -28,7 +28,6 @@ describe('Order.js', () => {
       order = {order}
     />); 
 
-    expect(getDate).toHaveBeenCalledTimes(1);
     expect(wrapper).toMatchSnapshot()
   });
 
@@ -40,9 +39,9 @@ describe('Order.js', () => {
       },
     };
 
-    const result = shallow(<Order {...props}/>);
+    const wrapper = shallow(<Order {...props}/>);
 
-    expect(result).toMatchSnapshot();
+    expect(wrapper.getElement()).toBeNull();
   });
 
   it('render with items null', () => {
@@ -56,7 +55,6 @@ describe('Order.js', () => {
 
     const wrapper = shallow(<Order {...props}/>);
 
-    expect(getDate).toHaveBeenCalledTimes(1);
     expect(wrapper).toMatchSnapshot();
   })
 
@@ -65,8 +63,38 @@ describe('Order.js', () => {
 
     const wrapper = shallow(<Order {...props}/>);
 
-    expect(getDate).toHaveBeenCalledTimes(0);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.getElement()).toBeNull();
   })
-});
 
+  it('getDate not called with null props', () => {
+    const props = null
+
+    shallow(<Order {...props}/>);
+
+    expect(getDate).toHaveBeenCalledTimes(0);
+  });
+
+  it('getDate called with null items', () => {
+    const props  = {
+      order: {
+        shop: 'some shop',
+        date: 1,
+        items: null,
+      },
+    };
+
+    shallow(<Order {...props}/>);
+
+    expect(getDate).toHaveBeenCalledTimes(1);
+  });
+
+  it('getDate called with fake data', () => {
+    const order = fakeOrders[0]
+
+    shallow(<Order
+      order = {order}
+    />); 
+
+    expect(getDate).toHaveBeenCalledTimes(1);
+  });
+});
